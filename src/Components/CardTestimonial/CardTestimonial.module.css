@@ -1,0 +1,16 @@
+.card {
+    background-color: white;
+    min-width: 200px;
+    min-height: 100px;
+    padding: 1em;
+    margin-right: 10px;
+}
+.card-title {
+    color: black;
+    margin-bottom: 20px;
+}
+.card-desc {
+    font-size: 12px;
+    letter-spacing: -0.43px;
+    color: #000000;
+}
