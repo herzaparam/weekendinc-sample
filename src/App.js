@@ -1,9 +1,16 @@
 import './App.css';
-import { ProfileImg, Robot, RobotPink, RobotPinkTrans } from './images'
+import React, { useRef } from 'react';
+import { ProfileImg, Robot, RobotPink, RobotPinkTrans, arrow } from './images'
 import CardTestimonial from './Components/CardTestimonial/CardTestimonial'
 import CardHelp from './Components/CardHelp/CardHelp'
 
 function App() {
+  const ref = useRef(null)
+
+  const scroll = (scrollOffset) => {
+    ref.current.scrollLeft += scrollOffset;
+  }
+
   return (
     <div className="App">
       <nav className="app-nav">
@@ -16,7 +23,6 @@ function App() {
       <header className="App-header">
         <h1>WEEKEND FROM HOME</h1>
         <p className="header-desc">Stay active with a little workout.</p>
-        <div className="circle-top"></div>
         <img src={Robot} alt="" className="header-robot" />
         <button className="header-btn">Let's Go</button>
       </header>
@@ -27,28 +33,37 @@ function App() {
           <p className="top-desc-bot">-weekend team</p>
         </div>
         <div className="sect-top-testimonial">
-          <div className="circle"></div>
-          <h2 className="testi-title">Testimonial</h2>
-          <div className="top-testi-display">
-            <CardTestimonial />
-            <CardTestimonial />
+          <div className="circle h2-mg2"></div>
+          <h2 className="testi-title h2-mg2">Testimonial</h2>
+          <div className="top-testi">
+            <button className="btn-arr left ab" onClick={() => scroll(-100)}><img src={arrow} alt="" className="img-arr-btn" /></button>
+            <div className="top-testi-display" ref={ref}>
+              <CardTestimonial />
+              <CardTestimonial />
+              <CardTestimonial />
+              <CardTestimonial />
+            </div>
+            <button className="btn-arr ab right" onClick={() => scroll(100)}><img src={arrow} alt="" className="img-arr-btn" /></button>
           </div>
+
         </div>
       </section>
       <section className="sect-bot">
-        <h2>POV</h2>
-        <p className="sect-bot-p white">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud ullamco laboris nisi ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
-        <h2>Resource</h2>
-        <p className="sect-bot-p white">These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best</p>
-        <h2>Help & Tips</h2>
+        <h2 className="h2-ta h2-mg2">POV</h2>
+        <p className="sect-bot-p white h2-ta">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud ullamco laboris nisi ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
+        <h2 className="h2-ta h2-mg2">Resource</h2>
+        <p className="sect-bot-p white h2-ta">These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best</p>
+        <h2 className="h2-ta h2-mg2">Help & Tips</h2>
         <div className="sect-bot-card">
           <CardHelp />
+          <CardHelp />
+          <CardHelp />
         </div>
-        <h2>You're all set.</h2>
-        <p className="sect-bot-p white">The wise man therefore always holds in these matters to this principle of selection.</p>
+        <h2 className="h2-ta h2-mg2">You're all set.</h2>
+        <p className="sect-bot-p white h2-ta">The wise man therefore always holds in these matters to this principle of selection.</p>
       </section>
       <section className="image-sect">
-        <img src={RobotPinkTrans} alt="" className="img-foot"/>
+        <img src={RobotPinkTrans} alt="" className="img-foot" />
       </section>
       <footer className="footer">
         <h4 className="foot-h4 white">wknd@<span className="foot-year">2020</span></h4>
