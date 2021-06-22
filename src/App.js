@@ -42,16 +42,16 @@ function App() {
         </div>
       </nav>
       <header className="App-header">
-        <h1>WEEKEND FROM HOME</h1>
-        <p className="header-desc">Stay active with a little workout.</p>
-        <img src={Robot} alt="" className="header-robot" />
-        <button className="header-btn">Let's Go</button>
+        <h1 className="txt-anim">WEEKEND FROM HOME</h1>
+        <p className="header-desc txt-anim2">Stay active with a little workout.</p>
+        <img src={Robot} alt="" className="header-robot txt-anim" />
+        <button className="header-btn txt-anim2">Let's Go</button>
       </header>
       <section className="sect-top">
         <img src={RobotPink} alt="" className="sect-top-img" />
         <div className="sect-top-desc">
-          <p className="top-desc-top"><span className="top-desc-top-span">Definition;</span> a practice or exercise to test or improve one's fitness for athletic competition, ability, or performance to exhaust (something, such as a mine) by working to devise, arrange, or achieve by resolving difficulties. Merriam-Webster.com Dictionary.</p>
-          <p className="top-desc-bot">-weekend team</p>
+          <p className="top-desc-top txt-anim2"><span className="top-desc-top-span">Definition;</span> a practice or exercise to test or improve one's fitness for athletic competition, ability, or performance to exhaust (something, such as a mine) by working to devise, arrange, or achieve by resolving difficulties. Merriam-Webster.com Dictionary.</p>
+          <p className="top-desc-bot txt-anim2">-weekend team</p>
         </div>
         <div className="sect-top-testimonial">
           <div className="circle h2-mg2"></div>
@@ -80,8 +80,8 @@ function App() {
         <h2 className="h2-ta h2-mg2">Help & Tips</h2>
         {tips.length !== 0 &&
           <div className="sect-bot-card">
-            {tips.map((item)=>{
-              return <CardHelp title={item.title} image={item.image} key={item.id} /> 
+            {tips.map((item) => {
+              return <CardHelp title={item.title} image={item.image} key={item.id} />
             })}
           </div>
         }
