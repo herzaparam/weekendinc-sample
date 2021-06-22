@@ -1,15 +1,36 @@
 import './App.css';
-import React, { useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { ProfileImg, Robot, RobotPink, RobotPinkTrans, arrow } from './images'
 import CardTestimonial from './Components/CardTestimonial/CardTestimonial'
 import CardHelp from './Components/CardHelp/CardHelp'
+import axios from 'axios'
 
 function App() {
   const ref = useRef(null)
 
+  const [testi, setTesti] = useState([]);
+  const [tips, setTips] = useState([]);
+
   const scroll = (scrollOffset) => {
     ref.current.scrollLeft += scrollOffset;
   }
+
+  useEffect(() => {
+    axios.get("https://wknd-take-home-challenge-api.herokuapp.com/testimonial")
+      .then((res) => {
+        setTesti(res.data)
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+    axios.get("https://wknd-take-home-challenge-api.herokuapp.com/help-tips")
+      .then((res) => {
+        setTips(res.data)
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }, [])
 
   return (
     <div className="App">
@@ -36,14 +57,17 @@ function App() {
           <div className="circle h2-mg2"></div>
           <h2 className="testi-title h2-mg2">Testimonial</h2>
           <div className="top-testi">
-            <button className="btn-arr left ab" onClick={() => scroll(-100)}><img src={arrow} alt="" className="img-arr-btn" /></button>
-            <div className="top-testi-display" ref={ref}>
-              <CardTestimonial />
-              <CardTestimonial />
-              <CardTestimonial />
-              <CardTestimonial />
-            </div>
-            <button className="btn-arr ab right" onClick={() => scroll(100)}><img src={arrow} alt="" className="img-arr-btn" /></button>
+            {testi.length !== 0 &&
+              <>
+                <button className="btn-arr left ab" onClick={() => scroll(-100)}><img src={arrow} alt="" className="img-arr-btn" /></button>
+                <div className="top-testi-display" ref={ref}>
+                  {testi.map((item) => {
+                    return <CardTestimonial testimonial={item.testimony} by={item.by} key={item.id} />
+                  })}
+                </div>
+                <button className="btn-arr ab right" onClick={() => scroll(100)}><img src={arrow} alt="" className="img-arr-btn" /></button>
+              </>
+            }
           </div>
 
         </div>
@@ -54,11 +78,13 @@ function App() {
         <h2 className="h2-ta h2-mg2">Resource</h2>
         <p className="sect-bot-p white h2-ta">These cases are perfectly simple and easy to distinguish. In a free hour, when our power of choice is untrammelled and when nothing prevents our being able to do what we like best</p>
         <h2 className="h2-ta h2-mg2">Help & Tips</h2>
-        <div className="sect-bot-card">
-          <CardHelp />
-          <CardHelp />
-          <CardHelp />
-        </div>
+        {tips.length !== 0 &&
+          <div className="sect-bot-card">
+            {tips.map((item)=>{
+              return <CardHelp title={item.title} image={item.image} key={item.id} /> 
+            })}
+          </div>
+        }
         <h2 className="h2-ta h2-mg2">You're all set.</h2>
         <p className="sect-bot-p white h2-ta">The wise man therefore always holds in these matters to this principle of selection.</p>
       </section>

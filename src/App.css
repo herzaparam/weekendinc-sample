@@ -248,6 +248,10 @@ bottom: -5px;
   .h2-mg2 {
     margin-left: 3em;
   }
+  .sect-bot-card {
+    display: flex;
+    flex-wrap: wrap;
+  }
 }
 @media (min-width: 992px) { 
   .top-testi-display {
@@ -302,6 +306,12 @@ bottom: -5px;
   .btn-arr {
     display: block;
   }
+  .left {
+    left: 200px;
+  }
+  .right {
+    right: -850px;
+  }
 }
 @media (min-width: 1366px) {
   .top-desc-top, .top-desc-bot {
@@ -318,6 +328,12 @@ bottom: -5px;
   }
   .testi-title {
     left: 590px;
+  }
+  .left {
+    left: 280px;
+  }
+  .right {
+    right: -900px;
   }
 }
 
